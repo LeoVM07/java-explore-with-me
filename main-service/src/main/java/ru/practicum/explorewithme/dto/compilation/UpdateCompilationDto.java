@@ -1,6 +1,7 @@
 package ru.practicum.explorewithme.dto.compilation;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 public class UpdateCompilationDto {
 
-    private List<Long> events; //id категорий
+    @JsonProperty("events")
+    private List<Long> events;
 
     private Boolean pinned;
 

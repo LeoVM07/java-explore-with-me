@@ -1,6 +1,7 @@
 package ru.practicum.explorewithme.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -24,7 +25,8 @@ public class UpdateAdminEventDto {
     private String annotation;
 
     @Positive
-    private Long category;
+    @JsonProperty("category")
+    private Long categoryId;
 
     @Size(min = 20, max = 7000, message = "Длина описания должна быть не менее 20 и не более 7000 символов")
     private String description;

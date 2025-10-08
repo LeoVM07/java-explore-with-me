@@ -1,6 +1,7 @@
 package ru.practicum.explorewithme.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,8 @@ public class CreateEventDto {
 
     @NotNull(message = "Необходимо указать id категории")
     @Positive
-    private Long category;
+    @JsonProperty("category")
+    private Long categoryId;
 
     @NotBlank(message = "Необходимо оставить описание события")
     @Size(min = 20, max = 7000, message = "Длина описания должна быть не менее 20 и не более 7000 символов")
@@ -48,5 +50,4 @@ public class CreateEventDto {
     @NotBlank(message = "Необходимо указать название события")
     @Size(min = 3, max = 120, message = "Длина названия должна быть не менее 3 и не более 120 символов")
     private String title;
-
 }

@@ -122,9 +122,9 @@ public class AdminEventServiceImpl implements AdminEventService {
             event.setAnnotation(updateRequest.getAnnotation());
         }
 
-        if (updateRequest.getCategory() != null) {
-            Category category = categoryRepository.findById(updateRequest.getCategory())
-                    .orElseThrow(() -> new CategoryIdException(updateRequest.getCategory()));
+        if (updateRequest.getCategoryId() != null) {
+            Category category = categoryRepository.findById(updateRequest.getCategoryId())
+                    .orElseThrow(() -> new CategoryIdException(updateRequest.getCategoryId()));
             event.setCategory(category);
         }
 

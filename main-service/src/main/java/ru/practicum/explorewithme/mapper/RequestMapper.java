@@ -8,7 +8,7 @@ import ru.practicum.explorewithme.model.Request;
 @Mapper(componentModel = "spring")
 public interface RequestMapper {
 
-    @Mapping(target = "event", source = "event.id")
-    @Mapping(target = "requester", source = "requester.id")
+    @Mapping(target = "eventId", source = "event.id")
+    @Mapping(target = "requesterId", source = "requester.id")
     RequestDto toDto(Request request);
 }

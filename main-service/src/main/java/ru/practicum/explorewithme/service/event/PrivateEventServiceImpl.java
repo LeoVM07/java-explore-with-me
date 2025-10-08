@@ -67,7 +67,7 @@ public class PrivateEventServiceImpl implements PrivateEventService {
         }
 
         User initiator = userRepository.findById(userId).orElseThrow(() -> new UserIdException(userId));
-        Category category = checkCategory(eventDto.getCategory());
+        Category category = checkCategory(eventDto.getCategoryId());
 
         Event newEvent = eventMapper.toEvent(eventDto, initiator, category);
         Event savedEvent = eventRepository.save(newEvent);
@@ -101,8 +101,8 @@ public class PrivateEventServiceImpl implements PrivateEventService {
         if (updateEventDto.getAnnotation() != null) {
             event.setAnnotation(updateEventDto.getAnnotation());
         }
-        if (updateEventDto.getCategory() != null) {
-            Category category = checkCategory(updateEventDto.getCategory());
+        if (updateEventDto.getCategoryId() != null) {
+            Category category = checkCategory(updateEventDto.getCategoryId());
             event.setCategory(category);
         }
 

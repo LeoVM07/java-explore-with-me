@@ -36,7 +36,8 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
     @Override
     public CompilationDto addCompilation(CreateCompilationDto newCompilation) {
 
-        List<Event> events = newCompilation.getEvents() != null ? eventRepository.findByIdIn(newCompilation.getEvents())
+        List<Event> events = newCompilation.getEventIds() != null ?
+                eventRepository.findByIdIn(newCompilation.getEventIds())
                 : List.of();
         Compilation compilation = new Compilation();
         compilation.setEvents(events);

@@ -1,6 +1,7 @@
 package ru.practicum.explorewithme.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,12 @@ public class RequestDto {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_TIME_PATTERN)
     private LocalDateTime created;
-    private Long event; //id
-    private Long requester; //id
+
+    @JsonProperty("event")
+    private Long eventId;
+
+    @JsonProperty("requester")
+    private Long requesterId;
+
     private RequestStatus status = RequestStatus.PENDING;
 }
