@@ -65,6 +65,12 @@ public class ErrorHandler {
     }
 
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleCommentIdException(CommentIdException e) {
+        return new ErrorResponse("Ошибка id комментария", e.getMessage());
+    }
+
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleInvalidEventTimeException(InvalidEventTimeException e) {
         return new ErrorResponse("Ошибка времени события", e.getMessage());
