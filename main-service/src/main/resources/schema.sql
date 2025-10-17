@@ -48,14 +48,27 @@ CREATE TABLE IF NOT EXISTS compilation_events (
     PRIMARY KEY (compilation_id, event_id)
 );
 
+CREATE TABLE IF NOT EXISTS comments (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    event_id BIGINT NOT NULL,
+    author_id BIGINT NOT NULL,
+    message VARCHAR(1000),
+    created TIMESTAMP WITHOUT TIME ZONE DEFAULT NOW(),
+    updated TIMESTAMP WITHOUT TIME ZONE
+);
+
 DROP INDEX IF EXISTS idx_events_category;
 DROP INDEX IF EXISTS idx_events_initiator;
 DROP INDEX IF EXISTS idx_events_date;
 DROP INDEX IF EXISTS idx_requests_event;
 DROP INDEX IF EXISTS idx_requests_event_requester;
+DROP INDEX IF EXISTS idx_comments_event;
+DROP INDEX IF EXISTS idx_comments_author;
 
 CREATE INDEX idx_events_category ON events(category_id);
 CREATE INDEX idx_events_initiator ON events(initiator_id);
 CREATE INDEX idx_events_date ON events(event_date);
 CREATE INDEX idx_requests_event ON requests(event_id);
 CREATE INDEX idx_requests_event_requester ON requests(event_id, requester_id);
+CREATE INDEX idx_comments_event ON comments(event_id);
+CREATE INDEX idx_comments_author ON comments(author_id);
