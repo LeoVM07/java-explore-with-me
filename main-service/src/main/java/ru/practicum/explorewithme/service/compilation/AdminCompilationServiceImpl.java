@@ -61,8 +61,8 @@ public class AdminCompilationServiceImpl implements AdminCompilationService {
         Compilation compilation = compilationRepository.findById(compilationId)
                 .orElseThrow(() -> new CompilationIdException(compilationId));
 
-        if (updateCompilation.getEvents() != null) {
-            List<Event> events = eventRepository.findByIdIn(updateCompilation.getEvents());
+        if (updateCompilation.getEventIds() != null) {
+            List<Event> events = eventRepository.findByIdIn(updateCompilation.getEventIds());
             compilation.setEvents(events);
         }
 
