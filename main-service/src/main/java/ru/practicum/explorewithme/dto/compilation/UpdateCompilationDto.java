@@ -17,7 +17,7 @@ import java.util.List;
 public class UpdateCompilationDto {
 
     @JsonProperty("events")
-    private List<Long> events;
+    private List<Long> eventIds;
 
     private Boolean pinned;
 
